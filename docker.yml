@@ -1,0 +1,60 @@
+- hosts: all
+  vars_prompt:
+          - name: os_name
+            private: no
+            prompt: "Enter the Docker Container Name"
+          - name: expose_port
+            private: no
+            prompt: "Enter Port no. of Host system to be used as Webserver port of Container"
+  tasks:
+  - name: "Configure Yum repo for Docker"
+    copy:
+            content: |
+                    [docker1]
+                    baseurl=https://download.docker.com/linux/centos/7/x86_64/stable/
+                    gpgcheck=0
+            dest: "/etc/yum.repos.d/docker.repo"
+
+  - name: "Installing Docker-ce software"
+    command:
+            cmd: "yum install docker-ce --nobest -y"
+            warn: false
+
+  - name: "Starting & Enabling Docker services"
+    service:
+            name: "docker"
+            state: started
+            enabled: yes
+
+  - name: "Installing docker-py package"
+    pip:
+            name: "docker-py"
+            state: present
+
+  - name: "Pulling Httpd Image from Docker Hub"
+    community.general.docker_image:
+            name: "httpd"
+            source: pull
+
+  - name: "Running Docker Container & exposing to Public"
+    community.general.docker_container:
+            name: "{{ os_name }}"
+            image: "httpd"
+            state: started
+            container_default_behavior: "compatibility"
+            ports:
+                    - "{{ expose_port }}:80"
+
+  - name: "Copying Webpages to the Hosts"
+    copy:
+            src: "index.html"
+            dest: "/root/"
+
+  - name: "Hosting Webpages in Httpd Docker OS"
+    command:
+            cmd: "docker cp index.html {{ os_name }}:/usr/local/apache2/htdocs"
+
+  - name: "To access the Website use this URL: "
+    debug:
+            msg: "http://{{ ansible_facts['enp0s8']['ipv4']['address'] }}:{{ expose_port }}/"
+
