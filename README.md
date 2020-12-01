@@ -12,4 +12,4 @@ Ansible is a great tool for Configuration Management & Automation. This Task was
 🔹 Run the docker container and expose it to the public
 🔹 Copy the html code in /var/www/html directory and start the web server
 
-Hope you guys liked it & learned something new. Thankyou, I'll meet you in the next one.
+Hope you guys liked it and learned something new. Thankyou, I'll meet you in the next one.
