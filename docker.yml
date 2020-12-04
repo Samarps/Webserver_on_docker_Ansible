@@ -8,13 +8,12 @@
             prompt: "Enter Port no. of Host system to be used as Webserver port of Container"
   tasks:
   - name: "Configure Yum repo for Docker"
-    copy:
-            content: |
-                    [docker1]
-                    baseurl=https://download.docker.com/linux/centos/7/x86_64/stable/
-                    gpgcheck=0
-            dest: "/etc/yum.repos.d/docker.repo"
-
+    yum_repository:
+            name: docker
+            description: "Repository for Docker-ce Software"
+            baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable/"
+            gpgcheck: no
+            
   - name: "Installing Docker-ce software"
     command:
             cmd: "yum install docker-ce --nobest -y"
