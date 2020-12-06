@@ -15,4 +15,4 @@ Ansible is a great tool for Configuration Management & Automation. This Task was
 Want to know how it works? Watch this video, were I explained & executed the code on my system:
 https://www.linkedin.com/posts/samar-pratap-singh-7788sps_python-vimaldaga-righteducation-activity-6739393896477986817-5zM-
 
-Hope you guys liked it and learned something new. Thankyou, I'll meet you in the next one.
+Hope you guys liked it and learned something new. Thankyou, I'll meet you in the next one. 😊
