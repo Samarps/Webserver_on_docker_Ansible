@@ -44,6 +44,19 @@
             ports:
                     - "{{ expose_port }}:80"
 
+  - name: "Starting Firewalld services if not started"
+    service:
+            name: "firewalld"
+            state: started
+            enabled: yes
+
+  - name: "Creating Firewall rule to expose the HAProxy service on port no. {{ expose_port }}"
+    ansible.posix.firewalld:
+            port: "{{ expose_port }}/tcp"
+            permanent: yes
+            state: enabled
+            immediate: yes
+
   - name: "Copying Webpages to the Hosts"
     copy:
             src: "index.html"
