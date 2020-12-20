@@ -4,7 +4,7 @@
 
 Ansible is a great tool for Configuration Management & Automation. This Task was given by Sir Vimal Daga in the Arth training recently.
 
-▪️ ARTH Task-10\
+## ARTH Task-10
 🔰 Write an Ansible PlayBook that does the following operations in the managed nodes:\
 🔹 Configure Docker\
 🔹 Start and enable Docker services\
