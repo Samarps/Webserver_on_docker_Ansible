@@ -2,9 +2,9 @@
 
  I've created an Ansible Playbook which can Configure Webserver on a Docker Container, & also configures in between dependencies like configuring Docker, etc.
 
-Ansible is a great tool for Configuration Management & Automation. This Task was given by Sir Vimal Daga in the Arth training recently.
+Ansible is a great tool for Configuration Management & Automation.
 
-## ARTH Task-10
+## Task Description
 🔰 Write an Ansible PlayBook that does the following operations in the managed nodes:\
 🔹 Configure Docker\
 🔹 Start and enable Docker services\
